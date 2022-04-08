@@ -1,0 +1,857 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%投递springer数据库期刊的模板
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{fix-cm} %需要的宏包
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+\documentclass[smallextended,11pt]{svjour3}  % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+
+\usepackage{amssymb} %数学字体与符号，必备。注意此宏包已经包括了 amsfonts，不要重复使用
+\usepackage{amsmath} %主要的目的是用来排版数学符号和公式
+\usepackage{amsfonts}
+%AMSFonts
+
+%美国数学学会根据其印刷和电子出版物以及在线资料库的样式要求，编造的一组用于排版数学出版物的数学符号字体库宏包套件，它包含有：amsfonts、amssymb、eufrak 和 eucal 四个宏包。
+
+%eucal 可修改 LaTeX 的数学字体命令 mathcal 。当加载该宏包后，使用 mathcal 命令，调出的是欧拉书写体，而不是通常的计算机现代书写体。它还有一个 mathscr 选项，使其可与数学字体命令 mathscr 结合使用。
+
+%eufrak 设置了哥特字体，这是一种书写或印刷字体，外观非常华丽，多见于中世纪时的神学文献。如果已加载了 amsfonts 宏包，该宏包就是多余的。
+
+%amsfonts 它定义了大写空心粗体字命令 mathbb 和欧拉字体命令 mathfrak 以及数学公式中各种相应的字体，如：粗数学斜体和粗希腊字母下标、求和积分等大符号下标、欧拉数学字体、斯拉夫字体等。
+
+%amssymb  宏包套件 AMSFonts 中的一个宏包，它定义了 amsfonts 宏包里 msam 和 mabm 字库中全部数学符号的命令。当调用该宏包时，amsfonts 宏包也同时被加载了。
+
+%amsmath   它定义了各种显示多行公式的环境和一系列排版数学公式的命令，可用以改进和提高方程式、多行上下标等数学结构的排版效果。例如，它提供的一条命令：cfrac，用来排版连分数，要比标准 LaTeX 中的 frac 命令输出效果更加美观。该宏包还有11个选项，可以影响极限、方程和方程序号等数学式的放置，而这些选项的设置要优先于源文件中其他相关选项的设置。当调用该宏包的同时，另外三个与之相关的宏包：amsbsy、amsopn amstext，也自动被加载了。
+\usepackage{latexsym} %LATEX 的数学符号宏包
+\usepackage{mathptmx} % use Times fonts if available on your TeX system
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n} %mathptmx 下重新设置\mathcal{}
+\DeclareSymbolFont{largesymbols}{OMX}{cmex}{m}{n}%mathptmx 下重新设置\mathcal{}
+\usepackage{bm}       %处理数学公式中的黑斜体
+\usepackage{bbm}      %粗体%再加粗
+\usepackage{graphicx} %图片宏包
+\usepackage{subfigure}%控制绘图子图宏包
+\usepackage{graphics} %图片宏包
+\usepackage{color}    % 支持彩色
+\usepackage{epsfig}   % eps图像
+\usepackage{epstopdf} % eps图像转PDF
+\usepackage{algorithm}%排列算法
+\usepackage{algorithmicx}%排列算法
+\usepackage{mathrsfs} %数学花体，手写体（相当于汉字的草体，连笔较多）
+\usepackage{wasysym}  %未知宏包的作用
+\usepackage[colorlinks,linkcolor=blue,citecolor=blue]{hyperref} % 超链接
+\usepackage{caption}  %提供了多种命令来更方便的设计浮动图形和表格的标题式样。
+\usepackage{float}    %浮动表格
+\usepackage{multirow} %表中的跨行合并宏包
+\usepackage{multicol} %表中的跨列合并宏包
+\usepackage{comment}  %大段注释宏包
+\usepackage{overpic}  %允许直接将 LaTeX 对象放置到 一幅图形上，而不是通过对图形上已有的标记进行替换来实现。overpic 宏包中定义了一个
+                      %overpic 环境，它有效地将 picture 环境和 includegraphics 命令结合起来。 使得 picture 环境的维数和插入的 EPS 图形%的维数相同。 这样就可以很容易地把 LaTeX 的命令放到图形上的任何指定位置。同时，还可以在图形上加上标尺以方便定位。
+\usepackage{psfrag}   %允许用 LaTeX 的文本和公式来替代 EPS 图形文件中的字符。在 CJK, CCT 等中文环境下，可以使用 psfrag 将图形中的标记字符替换所需的中文文本。
+\usepackage{rotating} %图形和表格的控制可以将文本、表格、图形旋转，并提供了 sidewayfigure 和 sidewaystable 环境来使图形或表格横排。另外，也可以用 rotcaption 命令来只对图形或表格的标题加以横排。
+\usepackage{stmaryrd} %使用stmaryrd的符号宏包
+\usepackage{verbatim} % verbatim 环境
+\usepackage{ifthen}
+%\usepackage{ccmap}
+\usepackage{pifont}   %特殊符号的宏包
+%\usepackage{geometry} %页边距宏包
+%\geometry{left=3.5cm,right=3.3cm,top=2.8cm,bottom=2.8cm}
+\smartqed             % flush right qed marks, e.g. at end of proof用在证明结束后出现结束的符号，加上\qed 就有结束方框了
+\usepackage{enumitem} %环境计数器宏包
+% please place your own definitions here and don't use \def but   \newcommand{}{}
+
+\newcounter{num}      %自己命名一个计数器
+\setcounter{num}{1}   %计数器的初始值设为1
+\newcommand{\num}{\arabic{num}\refstepcounter{num}}     %每次调用计数器时, 计数器的值自加 1
+\newcommand{\method}{$\textbf{Method }$$\mathbf{\num}$} %自定义method命令,method命令包含num命令
+
+\def
+\theequation{\arabic{section}.\arabic{equation}}  %重新定义equation命令
+\numberwithin{equation}{section}                  %方程计数器随着section的更新由1重新计数
+
+\def
+\thetheorem{\arabic{section}.\arabic{theorem}}    %重新定义theorem命令
+\numberwithin{theorem}{section}                   %定理计数器随着section的更新由1重新计数
+
+\def
+\thelemma{\arabic{section}.\arabic{lemma}}        %重新定义lemma命令
+\numberwithin{lemma}{section}                     %引理计数器随着section的更新由1重新计数
+
+\def
+\thecorollary{\arabic{section}.\arabic{corollary}}% 重新定义corollary命令
+\numberwithin{corollary}{section}                 %推论计数器随着section的更新由1重新计数
+
+\renewcommand{\today}{\number\year \number-\month \number-\day}  % 重新设置日期格式，为年月日
+
+% Insert the name of "your journal" with
+\journalname{lxajournal}
+%
+\begin{document}
+\title{Single-step triangular splitting method for a class of complex symmetric  linear systems}
+
+%\author{Xi-An Li \and Wen-Li Gao \and Yu-Jiang Wu}
+
+\author{XXX \and {\color{red}LLL} \and GGG  \and KKK}
+
+\institute{
+           % Xi-An Li
+           %\at E-mail:lixian9131@163.com
+           XXX\\
+           \email {XXX@163.com
+           \at School of Mathematical Sciences, **** University,  PR China}
+   \and
+          {\color{red}{\large{\ding{41}}} LLL \\%信箱符号使用符号宏包pifont下的\ding{41}
+           \email LLL@***.edu.cn}
+           \at {\color{red} School of Mathematical Sciences, **** University,  PR China}
+    \and
+           GGG
+           \at School of Mathematical Sciences, **** University,  PR China
+    \and
+           KKK
+           \at School of Mathematical Sciences, **** University,  PR China
+}
+
+\date{Received: date / Accepted: date}
+% The correct dates will be entered by the editor
+\maketitle
+%Created by Li Xi'an on \date{\today}\\
+
+\begin{abstract}
+In this paper, we recast a broad class of complex symmetric linear systems into  block two-by-two real equivalent formulation and establish a single-step triangular splitting (SSTS) method to the real form. Then, we investigate the convergence properties of this method and determine its optimal iteration parameter as well as corresponding optimal convergence factor. In addition, a accelerated variant of the SSTS (named after ASSTS) method is presented, which generally improves the convergence rate of the STSS method. Finally, some numerical experiments are given to validate the theoretical results and test the performance of the SSTS and the ASSTS  methods.
+\keywords{Complex symmetry \and Two-by-two\and Symmetric positive definite \and SSTS\and Preconditioner \and Convergence}
+
+\noindent\textbf{Mathematics Subject Classifications (2010)} 65F10 $\cdot$ 65F50
+
+\end{abstract}
+
+\section{Introduction}\label{sec:1}
+We consider the iterative solution of large and sparse complex symmetric linear systems
+\begin{equation}\label{0101}
+Au=b~~ \mathrm{with}~~ A=W+iT\in \mathbb{C}^{n\times n}~~\mathrm{and}~~ u,b\in\mathbb{C}^{n},
+\end{equation}
+where $W, T\in\mathbb{R}^{n\times n}$ are symmetric matrices with at least one of them being positive definite. Without loss of generality, throughout the paper, we assume that $W$ is symmetric positive definite. The linear systems arises frequently in many scientific and engineering applications. For instance, diffuse optimal tomography \cite{Arridge1999Optical}, molecular scattering \cite{Poirier2000Efficient}, structural dynamics \cite{Feriani2000}, FFT-based solution of certain time-dependent PDEs \cite{Bertaccini2004Efficient} and so on. More examples and additional practical background can be found in Ref.\cite{Benzi2010Block}.
+
+Lots of effective iterative methods have been proposed in the literatures for solving the linear
+systems \eqref{0101}. For example, Bai et al. presented a HSS method \cite{bai2003hermitian} based on the Hermitian/skew-Hermitian (HS) splitting of the  matrix $A$, and developed a MHSS  method \cite{bai2010modified} in order to accelerate the convergence rate of HSS method. This MHSS method is algorithmically described in the following.
+
+\begin{method} \textbf{(The MHSS method)}
+\label{m2}
+Given an initial guess $x^{(0)}\in \mathbb{C}^{n}$, for $k=0, 1,2,\cdots$, until $\{x^{(k)}\}$ converges, compute
+\begin{equation*}
+  \begin{cases}
+   (\alpha I+W)x^{(k+1/2)}=(\alpha I-iT)x^{(k)}+b,\\
+   (\alpha I+T)x^{(k+1)}=(\alpha I+iW)x^{(k+1/2)}-ib.
+  \end{cases}
+\end{equation*}
+where $\alpha$ is a positive constant and $I$ is the identify matrix.
+\end{method}
+
+They have also proved that for any positive parameter $\alpha$, the HSS and  MHSS methods will converge unconditionally to the unique solution of the linear systems \eqref{0101} when $T$ is symmetric positive semi-definite. Further, some variants of the two methods have been generalized and discussed by many researchers, please see \cite{Bai2011On,Dehghan2013A,Li2014Lopsided,Pour2015New,Wu2015Several,Yang2010A,Junfeng2012GENERALIZED,Zheng2016Accelerated} and the references therein.
+
+If let $u = x+iy$ and $b = p+iq$ with $x,y,p,q\in\mathbb{R}^{n}$, then the complex linear systems \eqref{0101} can be equivalently rewritten as the following real block two-by-two linear systems
+\begin{equation}\label{0102}
+     \mathcal{A}z:=\left (\begin{array}{cc} W & -T\\  T & W \end{array} \right)
+     \left( \begin{array}{c} x \\ y \end{array} \right)
+     =\left( \begin{array}{c} p \\ q \end{array} \right) =: \widetilde{b},
+\end{equation}
+which is regarded as a special class of generalized saddle point problems. For distributed control problems similar to \eqref{0102}, Bai et al. proposed a block PMHSS method \cite{bai2013preconditioned} following the idea of the MHSS methods. Later, Wang et al. developed a ADPMHSS method \cite{Wang2016Alternating} by adding one more parameter and shown that it can improve obviously the convergence rate of the PMHSS method. Recent years, many solvers have presented some effective techniques for the linear systems \eqref{0102}, such as C-to-R  methods \cite{Axelsson2000real,Axelsson2014comparison,bai2015preconditioned}, shift-splitting methods \cite{Bai2006A,Zeng2015Generalized,Zheng2016A} and SOR-like  methods \cite{hezari2015preconditioned,liang2016ssor,Salkuyeh2014Generalized}. Moreover, some high-quality preconditioner also have been constructed and studied in many papers. For example, additive block diagonal (ABD) preconditioner \cite{Bai2013Additive} and rotated block triangular preconditioner \cite{Bai2013Rotated,Lang2015Inexact} based on the PMHSS method \cite{bai2013preconditioned}, respectively. Recently, Li et al. \cite{Li2018On} established a symmetric  block triangular splitting (SBTS) method to the linear systems \eqref{0102} and give some theoretical analysis and numerical testes.
+
+In this work, we develop a single-step triangular splitting (SSTS) method for solving the real equivalent two-by-two linear systems \eqref{0102} according to the SBTS method. Then, the convergence condition of this method is derived and its optimal iteration parameter and corresponding optimal convergence factor also are determined. Besides it's used to be a solver, the SSTS iteration is also used as a preconditioner to accelerate Krylov subspace methods such as GMRES. Moreover, the solution of the systems can be obtained by  the algorithms such as Cholesky factorization or CG.
+
+In  this paper, we use $\rho(\cdot)$ and $sp(\cdot)$ to present the spectral radius and the spectrum of the corresponding matrix. Denote by $||\cdot||$ the  Euclidean norm of either a vector or a matrix.
+
+The paper is organized as follows. In Section \ref{sec:02}, we give a program of  establishing the SSTS  method for solving the complex symmetric system of linear equations \eqref{0101}. In Section \ref{sec:03}, we  discuss the  convergence of the SSTS method and give a way of choosing the optimal parameter as well as optimal convergence factor for this method. In section \ref{sec:04}, we introduce an efficient predictioner to accelerate the convergence rate of the SSTS method and discuss its convergence. In Section \ref{sec:05}, some numerical examples are presented, and the numerical results verify the efficiency of these methods. Finally, the paper is concluded in Section \ref{sec:06}.
+
+\section{The SSTS method}\label{sec:02}
+In this section, we firstly propose the SSTS method to solve the block two-by-two linear systems \eqref{0102}. For the matrix $\mathcal{A}$, we use the same splitting form in \cite{Li2018On}
+\begin{equation}\label{0201}
+\mathcal{A}  =\left( \begin{array}{cc}  W & O\\ T & \alpha W \end{array} \right)-
+             \left( \begin{array}{cc} O& T\\ O & (\alpha-1)W \end{array} \right)=:\mathcal{M}-\mathcal{N}
+\end{equation}
+where $\alpha$ is a positive real parameter. Then, we consider the following SSTS iteration scheme basing on the above splitting form.
+
+\begin{equation}\label{0202}
+  \left(\begin{array}{c} x^{(k+1)}\\y^{(k+1)}\end{array} \right)=
+   \mathcal{H}_{\alpha}\left(\begin{array}{c} x^{(k)}\\y^{(k)}\end{array} \right)+\mathcal{G}_{\alpha}\left( \begin{array}{c}  p \\ q \end{array} \right)
+\end{equation}
+where
+\begin{equation}\label{0203}
+  \begin{aligned}
+  \mathcal{H}_{\alpha}&=\mathcal{M}^{-1}\mathcal{N}\\
+  &=\left( \begin{array}{cc}W & 0\\ T & \alpha W \end{array} \right)^{-1}\left( \begin{array}{cc} O & T\\ O & (\alpha-1)W \end{array} \right)\\
+  &=\left(\begin{array}{cc} O&W^{-1}T\\O&\frac{\alpha-1}{\alpha}I-\frac{1}{\alpha}W^{-1}TW^{-1}T \end{array}\right)\\
+  \end{aligned}
+\end{equation}
+is the iteration matrix, and
+\begin{equation*}
+  \mathcal{G}_{\alpha}^{-1} =\left(\begin{array}{cc} W &O\\T& \alpha W \end{array} \right).
+\end{equation*}
+
+
+Analogously to the classical stationary iteration method, we give the SSTS  method to solve the linear systems \eqref{0102} by making use of the matrix splitting \eqref{0201}, it follows that:
+
+\begin{method}~\textbf{(The SSTS method)}
+Given initial vectors $x^{(0)}\in \mathbb{R}^{n}$ and $y^{(0)}\in \mathbb{R}^{n}$, and a real relaxation factors $\alpha>0$. For $k = 0, 1, 2, \cdots$ until the iteration sequence $\left\{(x^{(k)^{T}}, y^{(k)^{T}})^{T} \right\}$ converges to the exact solution of \eqref{0102}, compute the next iteration  according to the following procedure
+\begin{equation*}
+     \begin{cases}
+     Wx^{(k+1)}=Ty^{(k)}+p\\
+     \alpha Wy^{(k+1)}=(\alpha-1)Wy^{(k)}-Tx^{(k+1)}+q\\
+     \end{cases}
+\end{equation*}
+\end{method}
+
+Since $W \in \mathbb{R}^{n\times n}$ is symmetric positive definite and $T \in \mathbb{R}^{n\times n}$ is symmetric as well as $\alpha\in \mathbb{R}$ is positive, then the two linear sub-systems involved in each step of the SSTS iteration can be solved effectively using mostly real arithmetic either exactly by a Cholesky factorization or inexactly by  conjugate gradient and multigrid scheme.
+
+%{\color{red}In light of the splitting form \eqref{0201}, the lower triangular matrix $\mathcal{M}$ whose diagonal parts are symmetric positive can also be used as a preconditioner for the linear systems \eqref{0102}, the preconditioned systems take the following form}
+Further, the matrix $\mathcal{M}$ is block lower triangular and its diagonal parts are symmetric positive matrix, then the splitting matrix $\mathcal{M}$ can be used as a preconditioning matrix for the linear systems \eqref{0102} and the preconditioned systems take the following form
+\begin{equation}\label{0204}
+    \mathcal{M}^{-1}\mathcal{A}\left(\begin{array}{c} x\\y\end{array} \right) = \mathcal{M}^{-1}\left(\begin{array}{c} p\\q\end{array} \right).
+\end{equation}
+In the sequel, the matrix $\mathcal{M}$ will be referred to as the SSTS preconditioner and accelerate Krylov subspace methods such as GMRES. Moreover, at each step of applying the  preconditioner $\mathcal{M}$ within a GMRES  method, it is necessary to solve sequences of generalized residual equations of the form
+\begin{equation}
+\left( \begin{array}{c} e \\ f \end{array} \right)
+     =\mathcal{M}^{-1}\mathcal{A}\left( \begin{array}{c} r \\ s \end{array} \right),
+\end{equation}
+ which can be done in four steps by the following procedure:\\
+   (1) $t := Wr - Ts$;\\
+   (2) $u := Tr + Ws$;\\
+   (3) Solve $We = t$ for $e$;\\
+   (4) Solve $\alpha Wf = u - Te$ for $f$ .
+
+\section{Convergence discussion for the SSTS method}\label{sec:03}
+
+In this section, we turn to study the convergence properties of the SSTS method. Firstly, two useful lemmas are introduced to support our theories.
+\begin{lemma}\label{L0301}
+\textup{\cite{Salkuyeh2014Generalized}} Let the matrices $W$ and $T\in\mathbb{R}^{n\times n}$ be symmetric positive definite and symmetric, respectively. Then the eigenvalues of the matrix $S= W^{-1}T$ are all real.
+\end{lemma}
+
+\begin{lemma}\label{L0302}
+ Let $W\in\mathbb{R}^{n\times n}$ be symmetric positive definite and $T\in\mathbb{R}^{n\times n}$ be symmetric, then the eigenvalues of the matrix $W^{-1}TW^{-1}T$ are all real and nonnegative.
+\end{lemma}
+
+\begin{proof}
+Knowing the matrix $W$ is symmetric positive definite, then there exists a symmetric positive definite matrix $V$ such that $W = V^{2}$ (cf. \cite{Golub1996Matrix}). Therefore, we have
+\begin{equation*}
+    VW^{-1}TW^{-1}TV^{-1} = V^{-1}TW^{-1}TV^{-1} = V^{-T}TW^{-1}TV^{-1}=: \mathcal{R},
+\end{equation*}
+the matrix $W^{-1}TW^{-1}T$ is similar to $\mathcal{R}$. Since $W\in\mathbb{R}^{n\times n}$ is symmetric positive definite and $T\in\mathbb{R}^{n\times n}$ is symmetric, then the matrix $\mathcal{R}$ is symmetric positive semi-definite. Therefore, the eigenvalues of the matrix $W^{-1}TW^{-1}T$ are all real and nonnegative.                                        \qed
+\end{proof}
+
+Based on the above lemmas, we have the following main results about the SSTS method for the block two-by-two linear systems \eqref{0102}.
+
+\begin{theorem}\label{T0301}
+Let $W$ and $T \in \mathbb{R}^{n\times n}$ be symmetric positive definite and symmetric, respectively. Also let $\alpha$ be a positive constant and $S=W^{-1}T$. Assuming $\lambda$ is an eigenvalue of the iteration matrix $\mathcal{H}_{\alpha}$, then $\lambda=0$ with multiple $n$ and the remaining n eigenvalues of $\mathcal{H}_{\alpha}$ satisfy the following equation:
+\begin{equation}\label{0301}
+  \lambda-1+\frac{1+\mu_{i}^{2}}{\alpha}=0,
+\end{equation}
+where $\mu_{i} (i = 1, 2, \cdots ,n)$ are the eigenvalues of the matrix $S$. Moreover, the spectral radius of $\mathcal{H}_{\alpha}$ holds
+\begin{equation}\label{0302}
+  \rho(\mathcal{H}_{\alpha})=\max\left\{
+  \left|1-\frac{1+\mu_{min}^{2}}{\alpha}\right|,
+  \left|1-\frac{1+\mu_{max}^{2}}{\alpha}\right|\right\}.
+\end{equation}
+Here, $\mu_{min}=\underset{\mu_{i}\in sp(S)}{\min}\{|\mu_{i}|\}$ and $\mu_{max}=\underset{\mu_{i}\in sp(S)}{\max}\{|\mu_{i}|\}$.
+\end{theorem}
+
+\begin{proof}
+According to the iteration scheme of the SSTS method, we know the iteration matrix
+\begin{equation*}
+   \begin{aligned}
+    \mathcal{H}_{\alpha}
+                          &=\left(\begin{array}{cc} O&W^{-1}T\\
+                                                    O&\frac{\alpha-1}{\alpha}I-\frac{1}{\alpha}W^{-1}TW^{-1}T \end{array}\right)\\
+                          &=\left(\begin{array}{cc}O&S\\O&\frac{\alpha-1}{\alpha}I-\frac{1}{\alpha}S^{2}\end{array}\right)
+    \end{aligned}
+\end{equation*}
+where $S=W^{-1}T$. By Lemma \ref{L0301}, it is easy to know that $S$ has the spectral decomposition $S=V\Lambda V^{-1}$, where $V\in \mathbb{R}^{n\times n}$ is an invertible matrix and $\Lambda=diag(\mu_{1},\mu_{2},\cdots,\mu_{n})$ with $\mu_{i}(i=1,2,\cdots,n)$ being the eigenvalues of $S$. If let
+\begin{equation*}
+  \mathcal{P}=\left( \begin{array}{cc} V & O\\ O & V \end{array} \right),
+\end{equation*}
+then
+\begin{equation}\label{0303}
+  \widetilde{\mathcal{H}}_{\alpha}=\mathcal{P}^{-1}\mathcal{H}_{\alpha}\mathcal{P}=\left(\begin{array}{cc}O &\Lambda\\
+                                         O&\frac{\alpha-1}{\alpha}I-\frac{1}{\alpha}\Lambda^{2}\end{array}\right),
+\end{equation}
+which is similar to $\mathcal{H}_{\alpha}$, so they have the same spectrum. Suppose $\lambda$ is the eigenvalue of $\mathcal{H_{\alpha}}$,  then
+\begin{equation}\label{0304}
+  \begin{aligned}
+  det(\lambda I-\mathcal{H}_{\alpha})&=det(\lambda I- \widetilde{\mathcal{H}}_{\alpha})\\
+                                     &=det\left(\begin{array}{cc}\lambda I&-\Lambda\\
+                                         O&\lambda I-\frac{\alpha-1}{\alpha}I+\frac{1}{\alpha}\Lambda^{2}\end{array}\right)\\
+                                       &=\lambda^{n}det\left(\lambda I-\frac{\alpha-1}{\alpha}I+\frac{1}{\alpha}\Lambda^{2}\right)\\
+                                       &=0.
+  \end{aligned}
+\end{equation}
+Here, we denote the $n$-by-$n$ identity matrix by $I$. It is obvious that $\lambda=0$ is eigenvalue of the iteration matrix $\mathcal{H}_{\alpha}$ with multiply $n$ and the remaining $n$ eigenvalues satisfy  \eqref{0301} with $\mu_{i} (i = 1, 2, \cdots,n)$. Moreover, note that
+\begin{equation}\label{0305}
+  f(\mu_{i}^{2})=1-\frac{1+\mu_{i}^{2}}{\alpha}
+\end{equation}
+is a decreasing function with respect to variable $\mu^{2}_{i}$. Then, according to the definition of spectral radius, we have \eqref{0302}. \qed
+\end{proof}
+
+\begin{theorem} \label{T0302}
+ Let $W$, $T \in \mathbb{R}^{n\times n}$ be symmetric positive definite and symmetric, respectively. Suppose $\lambda$ is a nonzero eigenvalue of iterative matrix $\mathcal{H}_{\alpha}$ and $Z = (x^{T},y^{T})^{T}$ is the corresponding eigenvector, then $x=\frac{1}{\lambda}Sy(y\neq0)$ , where $x,y\in\mathbb{C}^{n}$ are two complex vectors and $S=W^{-1}T$.
+\end{theorem}
+\begin{proof}
+From \eqref{0203}, we have
+\begin{equation}\label{0306}
+\left(\begin{array}{cc}O&S\\
+                          O&\frac{\alpha-1}{\alpha}I-\frac{1}{\alpha}S^{2}\end{array}\right)
+\left(\begin{array}{c}x\\y\end{array}\right)=\lambda\left(\begin{array}{c}x\\y\end{array}\right),
+\end{equation}
+it is equivalent to
+\begin{equation}\label{0307}
+   \begin{cases}
+   S y=\lambda x,\\
+   \frac{\alpha-1}{\alpha}y-\frac{1}{\alpha}S^{2}y=\lambda y.
+   \end{cases}
+\end{equation}
+By the first equality in \eqref{0307} and $\lambda\neq0$, then $x=\frac{1}{\lambda} Sy$. Notice that when $y= 0$, then $x= 0$. Therefore, according to the definition of eigenvector, we have $y\neq0$. The proof is completed. \qed
+\end{proof}
+
+In the following result, we investigate the convergence condition of the SSTS method.
+\begin{theorem} \label{T0303}
+Let $W$ and $T \in \mathbb{R}^{n\times n}$ be symmetric positive definite and symmetric, respectively. If $\lambda$ is an eigenvalue of iteration matrix $\mathcal{H}_{\alpha}$, then the SSTS method  is convergent if and only if
+%{\color{red}Then the SSTS method  is convergent if and only if}
+\begin{equation}\label{0308}
+    \alpha>\frac{1+\mu^{2}_{max}}{2}.
+\end{equation}
+where $\mu_{max}$ is defined as in Theorem \textup{\ref{T0301}}.
+\end{theorem}
+
+\begin{proof}
+Based on the Theorem \ref{T0301}, the eigenvalues of $\mathcal{H}_{\alpha}$ with $\lambda=0$ of $n$ multiple and the remaining $n$ eigenvalues are
+\begin{equation*}
+  \lambda-1+\frac{1+\mu_{i}^{2}}{\alpha}=0.
+\end{equation*}
+If the SSTS method is convergent, it should have $\rho(\mathcal{H}_{\alpha})<1$. That is
+\begin{equation}\label{0309}
+ |\lambda| = \left |1-\frac{1+\mu_{i}^{2}}{\alpha}\right|<1,
+\end{equation}
+or equivalently,
+\begin{equation}\label{0310}
+  \begin{cases}
+  2\alpha>1+\mu_{i}^{2},\\
+  1+\mu_{i}^{2}>0.
+  \end{cases}
+\end{equation}
+Then according to the Lemma \ref{L0301}, it holds if and only if
+\begin{equation*}
+  2\alpha>1+\mu^{2}_{max}.
+\end{equation*}
+ Hence, the sufficient and necessary condition \eqref{0308} holds. \qed
+\end{proof}
+
+Next, we derive the optimal values of the parameter $\alpha$ which minimize the spectral radius of the iterative matrix of the SSTS method and give its corresponding  optimal convergence factor.
+\begin{theorem} \label{T0304}
+Let the conditions of Theorem \textup{\ref{T0301}} be satisfied. Then the optimal value of the relaxation parameter for the SSTS method is given by
+\begin{equation}\label{0311}
+\alpha_{opt}=\frac{2+\mu^{2}_{min}+\mu^{2}_{max}}{2},
+\end{equation}
+and the corresponding spectral radius of iterative matrix is
+\begin{equation}\label{0312}
+  \rho(\mathcal{H}_{\alpha_{opt}})=\frac{\mu^{2}_{max}-\mu^{2}_{min}}{2+\mu^{2}_{min}+\mu^{2}_{max}}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let $\lambda\neq0$ be the eigenvalue of $\mathcal{H}_{\alpha}$, then the selection of the optimal parameters $\alpha_{opt}$ depends on the solution of the following problem
+\begin{equation*}
+  \underset{\alpha}{\min}\underset{\mu_{i}\in sp(S)}{\max}\left|1-\frac{1+\mu^{2}_{i}}{\alpha}\right|.
+\end{equation*}
+Denote by
+\begin{equation*}
+  f{(\alpha)}=1-\frac{1+\mu^{2}_{min}}{\alpha}
+\end{equation*}
+and
+\begin{equation*}
+  g{(\alpha)}=1-\frac{1+\mu^{2}_{max}}{\alpha},
+\end{equation*}
+then the optimal parameter $\alpha_{opt}$ is attained when $f{(\alpha)}=-g{(\alpha)}$. By simply calculating, we have
+\begin{equation*}
+  \alpha_{opt}=\frac{2+\mu^{2}_{min}+\mu^{2}_{max}}{2}.
+\end{equation*}
+Substituting it into \eqref{0302} can easily obtain
+\begin{equation*}
+  \rho(\mathcal{H}_{\alpha_{opt}})=\frac{\mu^{2}_{max}-\mu^{2}_{min}}
+                             {2+\mu^{2}_{max}+\mu^{2}_{min}},
+\end{equation*}
+which completes the proof. \qed
+\end{proof}
+
+\begin{remark}\label{r01}
+For the SSTS and the SBTS methods, we see that they have the same optimal convergence factor by comparing the above theorem and theorem 3.5 in \cite{Li2018On}. The SBTS method need to solve four(or at least three) sub-systems with coefficient matrix $W\in \mathbb{R}^{n\times n}$, but the SSTS method only need to deal with two sub-systems. Thus, the SSTS method will be more practical and effective to implement under certain situations.
+\end{remark}
+
+\begin{remark}\label{r02}
+According to the above theorem, it's easy to find that the optimal convergence factor $\rho(\mathcal{H}_{\alpha})$ will decrease with $\mu_{max}$ decreasing. Further, if $\mu_{max} = 0$ yields to $\mu_{min} = 0$, then $\alpha_{opt}= 1$ and $\rho(\mathcal{H}_{\alpha_{opt}}) = 0$ by \eqref{0311} and \eqref{0312}. That means the method with highest speed of convergence.
+\end{remark}
+
+
+In section \ref{sec:02}, the splitting matrix $\mathcal{M}$ can serve as a preconditioner and its properties  are necessary to study. Here, we analyze and describe the spectral properties of the matrix $\mathcal{M}^{-1}\mathcal{A}$.
+
+\begin{corollary}\label{C0301}
+Let $\mathcal{A}\in \mathbb{R}^{2n\times 2n}$ be the nonsingular block two-by-two matrix defined in \eqref{0102}, with $W\in \mathbb{R}^{n\times n}$ being symmetric positive definite and $T\in \mathbb{R}^{n\times n}$ being symmetric. Also let $\alpha$ be a positive constant and $\mathcal{M}$ be defined in \eqref{0201}. Then, the following results of the preconditioned matrix $\Gamma_{\alpha} = \mathcal{M}^{-1}\mathcal{A}$ hold.
+\begin{itemize}
+  \item [(i)] has an eigenvalue $1$ with multiplicity at least $n$;
+  \item [(ii)] the remaining nonunit eigenvalues of $\Gamma_{\alpha}$ satisfy the equation
+     \begin{equation*}
+         \sigma = \frac{1+\xi}{\alpha},
+     \end{equation*}
+     where $\xi = \frac{v^{*}S^{2}v}{v^{*}v}$ with $S= W^{-1}T$.
+\end{itemize}
+\end{corollary}
+
+\begin{proof}
+From \eqref{0201}, we know
+\begin{equation}\label{0313}
+  \begin{aligned}
+  \Gamma_{\alpha}= \mathcal{M}^{-1}\mathcal{A} &=\left(\begin{array}{cc}W&O\\  T&\alpha W\end{array}\right)^{-1}
+                                          \left(\begin{array}{cc}W&-T\\T&W\end{array}\right)\\
+%       &=\left(\begin{array}{cc}W^{-1}&O\\-\frac{1}{\alpha}W^{-1}TW^{-1}&\frac{1}{\alpha}W^{-1}\end{array}\right)
+%     \left(\begin{array}{cc}W&-T\\T&W\end{array}\right)\\
+   &=\left(\begin{array}{cc} I&-W^{-1}T\\ O&\frac{1}{\alpha}I+\frac{1}{\alpha}W^{-1}TW^{-1}T\end{array}\right),
+   \end{aligned}
+\end{equation}
+denoting by $S=W^{-1}T$ then can write briefly $\eqref{0313}$ as
+\begin{equation*}
+  \Gamma_{\alpha}=\left(\begin{array}{cc} I&-S\\ O&\frac{1}{\alpha}I+\frac{1}{\alpha}S^{2}\end{array}\right).
+\end{equation*}
+Therefore, it is not difficult to find the matrix $\Gamma_{\alpha}$ has eigenvalue $1$ with multiplicity $n$.  The remaining $n$ eigenvalues satisfy the eigenvalue problem
+\begin{equation}\label{0314}
+    \sigma v = \frac{1}{\alpha}(I+ S^{2})v,
+\end{equation}
+then multiplying the \eqref{0314} from left by$\frac{v^{*}}{v^{*}v}$, we have
+\begin{equation*}
+    \sigma = \frac{1+ \xi}{\alpha}.
+\end{equation*}
+Noting that $\alpha>0$ and $\xi\geq 0$ based on Lemma \ref{L0302}. Therefore, the eigenvalue $\sigma$ of $\Gamma_{\alpha}$ is positive. \qed
+\end{proof}
+
+
+\begin{theorem}\label{T0305}
+Let $W$ and $T \in \mathbb{R}^{n\times n}$ be symmetric positive definite and symmetric, respectively. Also let $\alpha$ be a positive constant and $\mathcal{M}\in \mathbb{R}^{2n\times 2n}$ be the nonsingular matrix defined in \eqref{0201}. Then, the dimension of the Krylov subspace $\mathcal{K}(\mathcal{M}^{-1}\mathcal{A})$ is at most $n + 1$.
+\end{theorem}
+
+\begin{proof}
+Simplifying the \eqref{0313}, we have
+\begin{equation}\label{0315}
+ \mathcal{M}^{-1}\mathcal{A} =\left(\begin{array}{cc} I&\Xi_{1}\\ O& \Xi_{2} \end{array}\right),
+\end{equation}
+where $\Xi_{1} = -W^{-1}T$ and $\Xi_{2} = \frac{1}{\alpha}I+\frac{1}{\alpha}W^{-1}TW^{-1}T$. Suppose that $\zeta_{i}(i = 1, \cdots, n)$ are the eigenvalues of the matrix $\Xi_{2}$, they are clear the eigenvalues of the preconditioned matrix $\mathcal{M}^{-1}\mathcal{A}$. From \eqref{0315}, the characteristic polynomial of the preconditioned matrix $\mathcal{M}^{-1}\mathcal{A}$ is
+\begin{equation*}
+     (\lambda_{i}- I)^{n}\prod^{n}_{i=1}(\lambda_{i}-\zeta_{i}).
+\end{equation*}
+It is easy to compute
+\begin{equation*}
+  (\mathcal{M}^{-1}\mathcal{A} - I)\prod^{n}_{i=1}(\mathcal{M}^{-1}\mathcal{A} - \zeta_{i}I) =
+  \left(\begin{array}{cc} O&\Xi_{1} \prod^{n}_{i=1}(\Xi_{2} - \zeta_{i}I) \\ O&(\Xi_{2}-I)\prod^{n}_{i=1}(\Xi_{2} - \zeta_{i}I) \end{array}\right),
+\end{equation*}
+then using Hamilton-Cayley theorem gives
+\begin{equation}
+  \prod^{n}_{i=1}(\Xi_{2} - \zeta_{i}I) = 0.
+\end{equation}
+
+Thus, the degree of the minimal polynomial of $\mathcal{K}(\mathcal{M}^{-1}\mathcal{A})$ is at most $n + 1$. Consequently, the dimension of the corresponding Krylov subspace $\mathcal{K}(\mathcal{M}^{-1}\mathcal{A},\widetilde{b})$ is at most $n + 1$ (cf. \cite{YSaad2003} Proposition 6.1).  \qed
+\end{proof}
+
+
+
+\begin{remark}\label{r03}
+Theorem \ref{T0305} indicates that if the Kylov subspace method preconditioned by the SSTS preconditioner is used for
+solving \eqref{0102}, then it will terminate in at most $n+1$ iterations.
+\end{remark}
+
+\section{Accelerated variant of the SSTS method and its convergence analysis}\label{sec:04}
+
+In this section, we further assume that the matrices $W$ and $T$ are symmetric positive definite and symmetric positive semi-definite, respectively. By making using of the preconditioned  technique \cite{hezari2015preconditioned,liang2016ssor} to accelerate the convergence rate of the SSTS method, we obtain the preconditioned SSTS method. Let $I\in \mathbb{R}^{n \times n}$ be a identical matrix, and we consider the following preconditioned form of \eqref{0102}
+\begin{equation}\label{0401}
+     \left (\begin{array}{cc} I & I\\  -I & I\end{array} \right)
+     \left (\begin{array}{cc} W & -T\\  T & W \end{array} \right)
+     \left( \begin{array}{c} x \\ y \end{array} \right)
+     =\left (\begin{array}{cc} I & I\\  -I & I\end{array} \right)
+     \left( \begin{array}{c} p \\ q \end{array} \right),
+\end{equation}
+or equivalently,
+\begin{equation*}
+     \left (\begin{array}{cc} \widetilde{W} & -\widetilde{T}\\  \widetilde{T} & \widetilde{W} \end{array} \right)
+     \left( \begin{array}{c} x \\ y \end{array} \right)
+     =\left( \begin{array}{c} \widetilde{p} \\ \widetilde{q} \end{array} \right),
+\end{equation*}
+where $\widetilde{W}:=W+T, \widetilde{T}:=T-W$ and $\widetilde{p}:= p+q, \widetilde{q}:= q-p$.
+Applying the STSS method to the linear systems \eqref{0401}, we have the ASSTS method for the block two-by-two linear systems \eqref{0102}.
+
+\begin{method}~\textbf{(The ASSTS  method)}
+Given initial vectors $x^{(0)}\in \mathbb{R}^{n}$ and $y^{(0)}\in \mathbb{R}^{n}$, and a real relaxation factor $\alpha>0$. For $k = 0, 1, 2,\cdots$ until the iteration sequence $\left\{(x^{(k)^{T}}, y^{(k)^{T}})^{T} \right\}$ converges to the exact solution \eqref{0102}, compute the next iteration  according to the following procedure
+\begin{equation*}
+     \begin{cases}
+      \widetilde{W}x^{(k+1)}=\widetilde{T}y^{(k)}+ \widetilde{p}\\
+      \alpha\widetilde{W}y^{(k+1)}=(\alpha-1)\widetilde{W}y^{(k)}-\widetilde{T}x^{(k)}+ \widetilde{q}
+     \end{cases}
+\end{equation*}
+\end{method}
+
+\begin{lemma} \label{L0401}
+ \textup{\cite{liang2016ssor}} Let $W$ and $T \in \mathbb{R}^{n\times n}$ be symmetric positive definite and symmetric positive semi-definite, respectively. Denote by $\widetilde{W}=W+T$, $\widetilde{T}=T-W \in \mathbb{R}^{n\times n}$ and $\widetilde{S}=\widetilde{W}^{-1}\widetilde{T}$. Then
+\begin{equation}\label{0402}
+\rho(\widetilde{S})=\max\left\{\left|\frac{1-\mu_{min}}{1+\mu_{min}}\right|,\left|\frac{1-\mu_{max}}{1+\mu_{max}}\right|\right\}<1,
+\end{equation}
+where $\mu_{max}$ and $\mu_{min}$ are the largest and smallest eigenvalue of $S=W^{-1}T$, respectively.
+\end{lemma}
+
+\begin{theorem} \label{T0401}
+Let $W, T\in\mathbb{R}^{n\times n}$ be symmetric positive definite and  symmetric positive semi-definite, respectively. Denote by $\widetilde{W}=W+T$, $\widetilde{T}=T-W$ and $\widetilde{S}=\widetilde{W}^{-1}\widetilde{T}$. Then the ASSTS  method is convergent if and only if
+\begin{equation}\label{0403}
+     \alpha>\frac{1+\eta^{2}_{max}}{2}.
+\end{equation}
+Meantime, the optimal value of the relaxation parameter is given by
+\begin{equation}\label{0404}
+\alpha^{*}_{opt}=\frac{2+\eta^{2}_{min}+\eta^{2}_{max}}{2},
+\end{equation}
+and the corresponding spectral radius of iterative matrix is
+\begin{equation}\label{0405}
+  \rho(\mathcal{H}_{\alpha^{*}_{opt}})=\frac{\eta^{2}_{max}-\eta^{2}_{min}}{2+\eta^{2}_{min}+\eta^{2}_{max}},
+\end{equation}
+where $\eta_{min}=\underset{\eta_{i}\in sp(\widetilde{S})}{\min}\{|\eta_{i}|\}$ and $\eta_{max}=\underset{\eta_{i}\in sp(\widetilde{S})}{\max}\{|\eta_{i}|\}$. %$\widetilde{S} = \widetilde{W}^{-1}\widetilde{T}$.
+\end{theorem}
+
+\begin{proof}
+  Combining  the Theorems \ref{T0301}, \ref{T0303} and \ref{T0304}, the above conclusions are not hard to obtain and the proof is omitted.\qed
+\end{proof}
+
+\begin{corollary}\label{co0401}
+Let the conditions of Theorem \textup{\ref{T0401}} be satisfied. Then
+\begin{equation}\label{0406}
+\alpha^{*}_{opt}\in [1,2)~~~\mathrm{and}~~~\rho(\mathcal{H}_{\alpha^{*}_{opt}})< \frac{1}{3}.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+ By making use of the  Theorem \ref{0401} and the Lemma \ref{L0401}, it is easy to obtain the result  $\alpha^{*}_{opt}\in [1,2)$. Note that $\rho(\mathcal{H}_{\alpha^{*}_{opt}})$ is increasing and decreasing about $\eta^{2}_{max}$ and $\eta^{2}_{min}$, respectively. Then the result is obvious.  \qed
+\end{proof}
+
+\section{Numerical experiments}\label{sec:05}
+In this section, we illustrate the feasibility and efficiency of the SSTS and the ASSTS methods for solving  complex symmetric system of linear equations \eqref{0101}. Meantime, we compare their numerical results including iteration steps (denoted as IT), elapsed CPU time in seconds (denoted as CPU) and relative residual error (denoted as RES) with those of the MHSS, the SBTS, the SSTS and the ASSTS methods. The numerical experiment are performed in MATLAB[version 9.0.0.341360 (R2016a)] with machine precision $10^{-16}$.
+
+In our implementations, the initial guess is chosen to be zero vector and the iteration is terminated once the relative residual error satisfies
+\begin{equation*}
+\mathrm{RES}:=\frac{\left\|r^{(k)}\right\|_{2}}{\left\|r^{(0)}\right\|_{2}}<10^{-6}.
+\end{equation*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{example}\label{E01}
+\cite{Axelsson2000real,bai2010modified} Consider the complex symmetric linear systems of the form
+\begin{equation}\label{0501}
+  \left[\left(K+\frac{3-\sqrt{3}}{\tau}I\right)+i\left(K+\frac{3+\sqrt{3}}{\tau}I\right)\right]u=b.
+\end{equation}
+where $\tau$ is the time step-size, and $K=I_{m}\otimes V_{m} + V_{m} \otimes I_{m}$ with $V_{m}=h^{-2} \mathrm{tridiag}(-1,2,-1)\in \mathbb{R}^{m\times m}$. $K $ is the five-point centered difference approximation of the negative Laplacian operator $L=-\triangle$ with homogeneous Dirichlet boundary conditions on uniform mesh in the unit square $[0,1]\times[0,1]$. Here $\otimes$ is the Kronecker product symbol and $h=1/(m+1)$ is the discretization mesh-size.
+
+This complex symmetric linear systems arises in centered difference discretization of $R_{22}$-Pade approximations in the time integration of parabolic partial differential equations \cite{Axelsson2000real}. In this example, $K$ is an $n\times n$ block diagonal matrix with $n = m^{2}$. In our testes, we take $\tau=h$. Furthermore, we normalize coefficient matrix and righthand side of \eqref{0501} by multiplying both by $h^{2}$. We take
+\begin{equation*}
+  W=K+\frac{3-\sqrt{3}}{\tau}I~~~\mathrm{and}~~~T=K+\frac{3+\sqrt{3}}{\tau}I
+\end{equation*}
+The right-hand vector $b$ is given with its $j$th entry
+\begin{equation*}
+  b_{j}=\frac{(1-i)j}{\tau (1+j)^2},j=1, 2, ..., n.
+\end{equation*}
+\end{example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{example} \label{E02}
+\cite{bai2010modified,Benzi2010Block,Li2014Lopsided}
+Consider the complex symmetric linear systems of the form
+\begin{equation}\label{0502}
+[(-\omega^{2}M+K)+i(\omega C_{V}+C_{H}]u=b,
+\end{equation}
+where $M$ and $K$ are the inertia and the stiffness matrices, $C_{V}$ and $C_{H}$ are the viscous and hysteretic damping matrices, respectively. $\omega$ is the driving circular frequency and $K$ is defined the same as in Example \ref{E01}.
+
+This complex symmetric linear systems arises in direct domain analysis of an $n$ degree-of-freedom (n-DOF) linear systems \cite{Benzi2010Block}. In this example, $K$ is an $n\times n$ block diagonal matrix with $n=m^{2}$. We take $C_{H} = \mu K$ with $\mu$ being a damping coefficient, $M = I_{m}, C_{V} = 10I_{m}$. In addition, we set $\omega=\pi$ and the right-hand-side vector $b$ is chosen such that the exact solution of the linear systems \eqref{0502} is $b=(1 + i)A\bm{1}$, with $\bm{1}$ being the vector of all entries equal to $1$. Similar to Example \ref{E01}, the linear systems is normalized by multiplying both sides with $h^{2}$.
+\end{example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\begin{example}\label{E03}
+\cite{Bai2013Rotated,bai2010modified,Bai2011On,Dehghan2013A}(The nonsymmetric BBC problem)
+Consider the linear system of equations $(W+iT)u=b$, with
+\begin{equation}\label{0503}
+T=I\otimes V+V\otimes I~~\mathrm{and}~~W=10(I\otimes V_{c}+V_{c}\otimes I)+9(e_{1}e^{T}_{m}+e_{m}e^{T}_{1} )\otimes I,
+\end{equation}
+where $V=tridiag(-1,2, -1)\in \mathbb{R}^{m\times m}$, $V_{c}=V-e_{1}e^{T}_{m}-e_{m}e^{T}_{1}\in \mathbb{R}^{m\times m} $ and $e_{1}$ and $e_{m}$ are the first and last unit vectors in $\mathbb{R}^{m}$, respectively. We take the right-hand side vector b to be $b=(1 + i)A\bm{1}$, with $\bm{1}$ being the vector of all entries equal to $1$. Here $T$ and $W$ correspond to the five-point centered difference matrices approximating the negative Laplacian operator with homogeneous Dirichlet boundary conditions and periodic boundary conditions, respectively, on a uniform mesh in the unit square $[0,1]\times[0,1]$ with the mesh-size $h=1/(m+1)$.
+\end{example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{example}\label{E04}
+\cite{Bertaccini2004Efficient,Li2014Lopsided,Salkuyeh2014Generalized}
+We consider the complex Helmholtz equation
+\begin{equation}\label{0504}
+  -\Delta u+\sigma_{1}u+i\sigma_{2}u=f,
+\end{equation}
+where $\sigma_{1}$ and $\sigma_{2}$ are real coefficient functions, $u$ satisfies Dirichlet boundary conditions in $D=[0,1]\times[0,1]$ and $i=\sqrt{-1}$. We discretize the problem with finite differences on a $m\times m$ grid with mesh size $h=1/(m+1)$. This leads to a system of linear equations
+\begin{equation*}
+  ((K+\sigma_{1}I)+i\sigma_{2}I)u=b,
+\end{equation*}
+where $K=I \otimes V_{m}+V_{m} \otimes I$ is the discretization of $-\Delta$ by means of centered differences,
+wherein $V_{m}=h^{-2}tridiag(-1,2,-1)\in \mathbb{R}^{m\times m}$. The right-hand side vector $b$ is taken to be
+$b=(1 + i)A\bm{1}$, with $\bm{1}$ being the vector of all entries equal to 1. Furthermore, before solving the system we normalize the coefficient matrix and the right-hand side vector by multiplying both by $h^{2}$. For the numerical the SSTS we set $\sigma_{1}=\sigma_{2}=100$.
+\end{example}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In Table \ref{TT01} and \ref{TT02}, the optimal iteration parameters of the tested methods for the above two examples are listed. The optimal parameters of the MHSS  method are those presented in \cite{bai2010modified,Salkuyeh2014Generalized} (except for m = 512) and those of the SBTS method are chosen based on Theorem 3.5 in \cite{Li2018On}. In term of the SSTS and the ASSTS methods, the optimal parameters are chosen based on Theorems \ref{T0304} and \ref{T0401}, respectively.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \centering
+  \caption{ The parameters of MHSS, SBTS, SSTS and ASSTS methods for Example \ref{E01}}
+  \label{TT01}
+   \begin{tabular}{lccccccc}
+     \hline
+   \multirow{2}*{Method}&                   &                             \multicolumn{6}{c}{Grid}                            \\ \cline{3-8}
+                        &                   &$16\times16$&$32\times32$&$64\times64$&$128\times128$&$256\times256$&$512\times512$ \\ \hline
+   MHSS&$\alpha_{exp}$                      &1.06        &0.75        &0.54        &0.40          &0.30          &0.21        \\
+   SBTS&$\alpha^{*}_{opt}/\alpha^{**}_{opt}$&8.42/0.532  &10.66/0.525 &12.76/0.520 &14.31/0.518   &15.27/0.517   &15.82/0.516 \\
+   SSTS&$\alpha_{opt}$                      &4.47        &5.59        &6.64        &7.41          &7.90          &8.17        \\
+   ASSTS&$\alpha_{opt}$                     &1.09        &1.12        &1.14        &1.15          &1.16          &1.16        \\
+     \hline
+   \end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \centering
+  \caption{ The parameters of MHSS, SBTS, SSTS and ASSTS methods for Example \ref{E02}}
+  \label{TT02}
+   \begin{tabular}{lcccccccc}
+     \hline
+\multirow{2}*{}&\multirow{2}*{Method}&       &                       \multicolumn{6}{c}{Grid}                                 \\\cline{4-9}
+               &                     &       &$16\times16$&$32\times32$ &$64\times64$&$128\times128$&$256\times256$&$512\times 512$ \\ \hline
+\multirow{4}*{$\mu=0.5$}&MHSS &$\alpha_{exp}$&0.56        &0.31         &0.16         &0.08         &0.04          &0.02       \\
+                        &SBTS &$\alpha^{*}_{opt}/\alpha^{**}_{opt}$&19.43/0.513&19.29/0.513&19.25/0.513&19.24/0.513&19.24/0.513&19.24/0.513\\
+                        &SSTS &$\alpha_{opt}$&9.97       &9.90        &9.88        &9.88        &9.87         &9.87  \\ \vspace{0.1cm}
+                        &ASSTS&$\alpha_{opt}$&1.19        &1.19         &1.19         &1.19         &1.19          &1.19   \\
+\multirow{4}*{$\mu=1$}  &MHSS &$\alpha_{exp}$&0.77        &0.41         &0.21         &0.11         &0.06          &0.035  \\
+                        &SBTS &$\alpha^{*}_{opt}/\alpha^{**}_{opt}$&29.64/0.509&29.43/0.509&29.38/0.509&29.36/0.509&29.36/0.509&29.36/0.509\\
+                        &SSTS &$\alpha_{opt}$&15.07       &14.97        &14.94        &14.93        &14.93         &14.93  \\ \vspace{0.1cm}
+                        &ASSTS&$\alpha_{opt}$&1.23        &1.23         &1.23         &1.23         &1.22          &1.22   \\
+\multirow{4}*{$\mu=2$}  &MHSS &$\alpha_{exp}$&0.98        &0.53         &0.28         &0.15         &0.08          &0.04   \\
+                        &SBTS &$\alpha^{*}_{opt}/\alpha^{**}_{opt}$&57.61/0.504&57.23/0.504&57.13/0.504&57.10/0.504&57.09/0.504&57.09/0.504\\
+                        &SSTS &$\alpha_{opt}$&29.06       &28.87        &28.82        &28.80        &28.80         &28.80            \\
+                        &ASSTS&$\alpha_{opt}$&1.34        &1.34         &1.34         &1.34         &1.34          &1.34  \\
+     \hline
+   \end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ From the above two tables, one can observe that the optimal parameters decrease with the increasing of problems size for the MHSS method, the optimal parameters of the SBTS, the SSTS and ASSTS methods keep same tendency %with the increasing of problem size
+ for each example. Besides, the optimal parameters of the ASSTS method have a little change. At the same time, Table \ref{TT03} lists the optimal convergence factor corresponding to optimal parameters of the SBTS, the SSTS and the ASSTS methods. The iteration number and the CPU times of the MHSS, the SBTS, the SSTS and the ASSTS  methods for the examples are shown in Tables \ref{TT04} -- \ref{TT07}. In terms of numerical experiment, we note that the MHSS  method is employed to solve the original complex symmetric linear system \eqref{0101}, while the SBTS, the SSTS and the ASSTS  methods are employed to solve the real equivalent block two-by-two linear systems \eqref{0102}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \centering
+  \caption{The optimal convergence factor corresponding to optimal parameters of the SBTS, SSTS and ASSTS methods presented in Table \ref{TT01}}
+  \label{TT03}
+   \begin{tabular}{lccccccccc}
+     \hline
+\multirow{2}*{Example}&&        &                  \multicolumn{6}{c}{Grid}                            \\ \cline{4-9}
+                      &&              &$16\times16$&$32\times32$&$64\times64$&$128\times128$&$256\times256$&$512\times512$\\ \hline
+                      &         &SBTS &0.5510      &0.6410      &0.6977      &0.7295        &0.7465        &0.7551  \\
+          No.\ref{E01}&         &SSTS &0.5510      &0.6410      &0.6977      &0.7295        &0.7465        &0.7551  \\ \vspace{0.2cm}
+                      &         &ASSTS&0.0822      &0.1048      &0.1211      &0.1312        &0.1368        &0.1398  \\
+                      &         &SBTS &0.9166      &0.8965      &0.8853      &0.8795        &0.8765        &0.8749  \\
+                      &$\mu=0.5$&SSTS &0.9166      &0.8965      &0.8853      &0.8795        &0.8765        &0.8749  \\ \vspace{0.1cm}
+                      &         &ASSTS&0.1890      &0.1733      &0.1659      &0.1622        &0.1604        &0.1595  \\
+                      &         &SBTS &0.9087      &0.8888      &0.8779      &0.8720        &0.8691        &0.8676  \\
+          No.\ref{E02}&$\mu=1$  &SSTS &0.9087      &0.8888      &0.8779      &0.8720        &0.8691        &0.8676  \\ \vspace{0.1cm}
+                      &         &ASSTS&0.2112      &0.1986      &0.1924      &0.1893        &0.1878        &0.1870  \\
+                      &         &SBTS &0.8769      &0.8530      &0.8400      &0.8333        &0.8299        &0.8281  \\
+                      &$\mu=2$  &SSTS &0.8769      &0.8530      &0.8400      &0.8333        &0.8299        &0.8281  \\
+                      &         &ASSTS&0.1883      &0.1802      &0.1759      &0.1737        &0.1726        &0.1720  \\
+     \hline
+   \end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+From Table \ref{TT03}, some conclusions are obtained. Just as depicting in Remark \ref{r01}, the optimal convergence factor of the SBTS and the SSTS methods are same, it dedicate the two methods will converge in the same iteration step. Meantime, we see that the optimal convergence factor of the ASSTS method is very much smaller than the SBTS and the SSTS methods, so it will have the high performances than the later two methods. One can see their performances, respectively, in the Table \ref{TT04} -- \ref{TT07}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \centering
+  \caption{ Numerical results for Example \ref{E01}}
+  \label{TT04}
+   \begin{tabular}{lcccccccc}
+     \hline
+  Method&   &$16\times16$&$32\times32$&$64\times64$&$128\times128$&$256\times256$&$512\times512$  \\      \hline
+        &IT &40          &54          &73          &98            &133           &181             \\
+  MHSS  &CPU&0.0065      &0.0444      &0.4998      &5.4905        &54.5122       &544.3006        \\      \vspace{0.1cm}
+        &RES&9.67e-07    &9.61e-07    &9.41e-07    &9.35e-07      &9.99e-07      &9.74e-07      \\
+        &IT &23          &31          &39          &45            &48            &51              \\
+  SBTS  &CPU&0.0045      &0.0247      &0.2185      &1.9279        &13.9891       &108.6717        \\      \vspace{0.1cm}
+        &RES&5.71e-07    &6.81e-07    &7.23e-07    &7.65e-07      &9.88e-07    &7.87e-07        \\
+        &IT &24          &31          &39          &45            &49            &51              \\
+  SSTS  &CPU&0.0031      &0.0168      &0.1458      &1.3247        &9.6306        &71.0117         \\       \vspace{0.1cm}
+        &RES&5.57e-07    &9.51e-07    &9.08e-07    &9.16e-07      &8.84e-07      &9.27e-07      \\
+        &IT &6           &7           &7           &7             &7             &7               \\
+  ASSTS &CPU&0.0008      &0.0032      &0.0209      &0.1818        &1.2447        &8.9829          \\
+        &RES&3.91e-07    &1.59e-07    &4.15e-07    &6.39e-07      &9.47e-07      &9.49e-07      \\
+     \hline
+   \end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \centering
+  \caption{ Numerical results for Example \ref{E02} with $\mu = 0.5$}
+  \label{TT05}
+   \begin{tabular}{lccccccc}
+     \hline
+  Method&   &$16\times16$&$32\times32$&$64\times64$&$128\times128$&$256\times256$&$512\times512$ \\     \hline
+        &IT &51          &85          &150         &279           &529           &1012           \\
+  MHSS  &CPU&0.0035      &0.0306      &0.3786      &5.0279        &67.5663       &2079.5757      \\     \vspace{0.1cm}
+        &RES&9.32e-07    &9.66e-07    &9.87e-07    &9.69e-07      &9.91e-07      &9.93e-07     \\
+        &IT &100         &100         &100         &101           &102           &101            \\
+  SBTS  &CPU&0.0061      &0.0318      &0.2267      &1.9161        &13.7038       &102.2811       \\     \vspace{0.1cm}
+        &RES&9.58e-07    &9.02e-07    &9.88e-07    &9.98e-07      &9.11e-07      &9.16e-07     \\
+        &IT &101         &100         &101         &101           &101           &101            \\
+  SSTS  &CPU&0.0045      &0.0219      &0.1548      &1.2914        &9.2617        &68.7370        \\     \vspace{0.1cm}
+        &RES&9.44e-07    &9.46e-07    &8.89e-07    &9.31e-07      &9.31e-07      &9.34e-07     \\
+        &IT &8           &7           &7           &6             &6             &6              \\
+  ASSTS &CPU&0.0003      &0.0015      &0.0108      &0.0762        &0.5237        &4.1122         \\
+        &RES&2.50e-07    &5.91e-07    &2.16e-07    &5.95e-07      &3.33e-07      &2.82e-07     \\
+     \hline
+   \end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \centering
+  \caption{ Numerical results for Example \ref{E02} with $\mu = 1$}
+  \label{TT06}
+   \begin{tabular}{lccccccc}
+     \hline
+  Method&   &$16\times16$&$32\times32$&$64\times64$&$128\times128$&$256\times256$&$512\times512$ \\    \hline
+        &IT &56          &94          &168         &306           &555           &1086           \\
+  MHSS  &CPU&0.0038      &0.0331      &0.4096      &5.7081        &74.8911       &2689.4846      \\    \vspace{0.1cm}
+        &RES&8.83e-07    &9.61e-07    &9.87e-07    &9.71e-07      &9.89e-07      &9.96e-07     \\
+        &IT &95          &95          &96          &96            &97            &97             \\
+  SBTS  &CPU&0.0057      &0.0301      &0.2133      &1.8404        &13.1137       &101.9332        \\    \vspace{0.1cm}
+        &RES&9.11e-07    &9.27e-07    &9.27e-07    &9.84e-07      &8.71e-07      &8.75e-07     \\
+        &IT &96          &96          &97          &97            &97            &97             \\
+  SSTS  &CPU&0.0038      &0.0202      &0.1258      &1.1426        &8.1649        &65.6835        \\    \vspace{0.1cm}
+        &RES&9.29e-07    &8.74e-07    &8.65e-07    &9.16e-07      &9.36e-07      &9.41e-07     \\
+        &IT &9           &9           &9           &9             &8             &8              \\
+  ASSTS &CPU&0.0004      &0.0018      &0.0123      &0.1071        &0.7558        &5.0664         \\
+        &RES&2.29e-07    &2.01e-07    &1.98e-07    &1.98e-07      &7.91e-07      &7.91e-07     \\
+     \hline
+   \end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+  \centering
+  \caption{ Numerical results for Example \ref{E02} with $\mu = 2$}
+  \label{TT07}
+   \begin{tabular}{lccccccc}
+     \hline
+  Method&   &$16\times16$&$32\times32$&$64\times64$&$128\times128$&$256\times256$&$512\times512$ \\    \hline
+        &IT &56          &95          &169         &303           &552           &1025           \\
+  MHSS  &CPU&0.0039      &0.0338      &0.4275      &5.5649        &71.6927       &2189.5623      \\    \vspace{0.1cm}
+        &RES&9.92e-07    &9.63e-07    &9.47e-07    &9.84e-07      &9.99e-07      &9.05e-07     \\
+        &IT &73          &74          &75          &75            &75            &75             \\
+  SBTS  &CPU&0.0044      &0.0229      &0.1703      &1.4204        &9.8972        &74.0476        \\    \vspace{0.1cm}
+        &RES&9.13e-07    &8.98e-07    &8.84e-07    &9.44e-07      &9.63e-07      &9.69e-07     \\
+        &IT &74          &75          &76          &76            &76            &76             \\
+  SSTS  &CPU&0.0025      &0.0143      &0.0984      &0.9716        &6.7167        &51.5227        \\    \vspace{0.1cm}
+        &RES&8.91e-07    &8.72e-07    &8.57e-07    &9.12e-07      &9.33e-07      &9.39e-07     \\
+        &IT &9           &9           &9           &9             &9             &9              \\
+  ASSTS &CPU&0.0004      &0.0018      &0.0129      &0.1075        &0.7922        &6.0754         \\
+        &RES&8.44e-07    &9.88e-07    &1.83e-07    &1.89e-07      &1.91e-07      &1.92e-07     \\
+     \hline
+   \end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+From Tables \ref{TT04} -- \ref{TT07}, the following conclusions are clear. On the one hand, the SBTS, the SSTS and the ASSTS methods with theoretical optimal parameters are superior to the MHSS methods for Example $\ref{E01}$. On the other hand, the SBTS and the SSTS methods don't perform better than the MHSS method when the size of problem is small for Example \ref{E02}, but their performance will be better and better with grid size increasing. As for the SBTS and the SSTS methods, their performances are much the same for iteration steps, while the SSTS method needs less CPU times. At the same time, the ASSTS method performs the best and needs the least iteration steps and CPU times. Hence, the SSTS and the ASSTS methods with optimal parameters proposed in this paper can effectively solve the complex symmetric linear systems \eqref{0101} comparing with the MHSS and the SBTS methods.
+
+It is well known that the spectral properties of the preconditioned matrix give important insight in the convergence
+behavior of the preconditioned Krylov subspace methods. Here, we depict the eigenvalues distribution of the coefficient matrix $\mathcal{A}$ and the SSTS-preconditioned matrix $\mathcal{M}^{-1}\mathcal{A}$ in Figures \ref{fig01} and \ref{fig03} for viewing the effect of SSTS-preconditioner when $m = 32$. It is evident that the complex systems which is preconditioned by SSTS method has at least $1024 = 32^{2}$ eigenvalues $1$ and the nonunit eigenvalues are also well distributed.  This phenomenon confirms the theoretical analysis in Corollary \ref{C0301}.
+These observations imply that when SSTS method is applied as a preconditioner for Kroylov method such as GMRES  and the rate of convergence can be improved considerably. Further, we list some numerical results presented in Table \ref{TT08}. In our numerical computations, we make use of GMRES$(20)$ to investigate the performance of the SSTS-preconditioner. The GMRES(20) method terminates if the relative residual error satisfies $\|r(k)\|^{2}/\|r(0)\|^{2} < 10-6$ or the iteration number is more than 5000.
+
+\begin{figure}[H]
+  \centering
+  \subfigure{\epsfxsize 0.5 \hsize \epsfbox{E1A.eps}}~
+  %\hspace{0.01cm}
+  \subfigure{\epsfxsize 0.5 \hsize \epsfbox{E1PA.eps}}
+  \caption{Eigenvalues distribution of the original matrix $\mathcal{A}$ (left) and the preconditioned matrix $\mathcal{M}^{-1}\mathcal{A}$ (right) for Example \ref{E01} with m = 32}
+  \label{fig01}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \subfigure{\epsfxsize 0.5 \hsize \epsfbox{E2mu0point5A.eps}}~~~~~
+  \subfigure{\epsfxsize 0.5 \hsize \epsfbox{E2mu0point5PA.eps}}
+  \label{fig02}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \subfigure{\epsfxsize 0.5 \hsize \epsfbox{E2mu1A.eps}}~~~~~
+  \subfigure{\epsfxsize 0.5 \hsize \epsfbox{E2mu1PA.eps}}
+  \label{fig03}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \subfigure{\epsfxsize 0.5 \hsize \epsfbox{E2mu2A.eps}}~~~~~
+  \subfigure{\epsfxsize 0.5 \hsize \epsfbox{E2mu2PA.eps}}
+  \caption{Eigenvalues distribution of the original matrix $\mathcal{A}$ (left) and the preconditioned matrix $\mathcal{M}^{-1}\mathcal{A}$ (right) for Example \ref{E02} with m = 32}
+  \label{fig03}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[!h]
+  \centering
+  \caption{ Numerical results}
+  \label{TT08}
+   \begin{tabular}{lcccccccc}
+     \hline
+  Example& &Method        &     &$16\times16$&$32\times32$&$64\times64$&$128\times128$&$256\times256$\\ \hline
+  \multirow{4}*{No.\ref{E01}}&&GMRES(20)    &IT &15(3)&36(7)&77(13) &134(3)  &210(4) \\\vspace{0.15cm}
+        &   &                           &CPU&0.0169&0.0851  &0.8663 & 4.0986 & 24.6045              \\
+
+        &                     &SSTS-GMRES(20)&IT &1(10)   &1(12)   &1(14)   &1(17)    &1(19)             \\\vspace{0.15cm}
+        &   &                            &CPU&0.0071  &0.0281  &0.1199  &0.6965   &4.8576              \\
+
+  \multirow{12}*{No.\ref{E02}}&\multirow{4}*{$\mu=0.5$}&GMRES(20)&IT &13(4)&91(3) &249(5)  &--   &--               \\\vspace{0.15cm}
+       &    &                   &CPU&0.0245      &0.2199      &2.7867      &--             & --            \\
+
+       &   &SSTS-GMRES(20)     &IT  &1(8)        &1(8)        &1(8)        &1(8)           &1(8)              \\\vspace{0.15cm}
+       &   &               &CPU &0.0098      &0.0181      &0.0711      &0.3294         &1.6348              \\
+
+       &\multirow{4}*{$\mu=1$}&GMRES(20) &IT &47(3)&201(4)    &--          &--             &--               \\\vspace{0.15cm}
+       &   &                    &CPU&0.0245  &0.4645          &--          &--             &--              \\
+
+       &   &SSTS-GMRES(20)     &IT &1(8)        &1(8)        &1(8)        &1(8)           &1(8)               \\\vspace{0.15cm}
+       &   &               &CPU&0.0102      &0.0185      &0.681       &0.3281         &1.6279              \\
+
+       &\multirow{4}*{$\mu=2$}  &GMRES(20)&IT&120(19)&--      &--          &--             &--              \\\vspace{0.15cm}
+       &   &                    &CPU&0.1278       &--         &--          &--             &--              \\
+
+       &   &SSTS-GMRES(20)     &IT &1(8)        &1(8)        &1(8)        &1(8)           &1(8)               \\
+       &   &               &CPU&0.0075      &0.0165      &0.0668      &0.3252         &1.6225              \\
+     \hline
+   \end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The above results show that the GMRES(20) method converges very slowly for solving the above examples. In particular, its convergence rate get bad and bad with $\mu$ increasing for Example \ref{E02}. However, when SSTS method used as a preconditioner, it improves obviously computing efficiency of the GMRES(20) method. The iteration steps of the SSTS preconditioned GMRES(20) method increase slowly with the grid size $m$ increasing and the amplitude is relatively stable.
+
+
+\section{Conclusion}\label{sec:06}
+We present a practical and effective single-step triangular splitting method for a class of complex symmetric linear systems \eqref{0101} and discuss its convergence properties. The optimal iteration parameters and corresponding convergence factor of this method are also obtained under suitable convergence conditions. Besides, a accelerated variant of the SSTS method is established, which is more effective than the SSTS method. Numerical experiments show that the SSTS and the ASSTS methods with optimal parameters proposed
+in this paper are more powerful comparing with the MHSS and the SBTS methods for solving a class of complex symmetric system of linear equations.
+
+
+
+\begin{acknowledgements}
+Work is supported by National Natural Science Foundation of China (Grant No. 11471150).
+\end{acknowledgements}
+
+% BibTeX users please use one of
+%\bibliographystyle{spbasic}      % basic style, author-year citations
+%\bibliographystyle{spmpsci}      % mathematics and physical sciences
+%\bibliographystyle{spphys}       % APS-like style for physics
+%\bibliography{}   % name your BibTeX data base
+
+\bibliographystyle{spmpsci}      % mathematics and physical sciences
+\bibliography{References}
+
+\end{document}
+

@@ -1,0 +1,173 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%投递springer数据库期刊的模板
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{fix-cm} %需要的宏包
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+\documentclass[smallextended,11pt]{svjour3}  % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+
+\usepackage{amssymb} %数学字体与符号，必备。注意此宏包已经包括了 amsfonts，不要重复使用
+\usepackage{amsmath} %主要的目的是用来排版数学符号和公式
+\usepackage{amsfonts}
+%AMSFonts
+
+%美国数学学会根据其印刷和电子出版物以及在线资料库的样式要求，编造的一组用于排版数学出版物的数学符号字体库宏包套件，它包含有：amsfonts、amssymb、eufrak 和 eucal 四个宏包。
+
+%eucal 可修改 LaTeX 的数学字体命令 mathcal 。当加载该宏包后，使用 mathcal 命令，调出的是欧拉书写体，而不是通常的计算机现代书写体。它还有一个 mathscr 选项，使其可与数学字体命令 mathscr 结合使用。
+
+%eufrak 设置了哥特字体，这是一种书写或印刷字体，外观非常华丽，多见于中世纪时的神学文献。如果已加载了 amsfonts 宏包，该宏包就是多余的。
+
+%amsfonts 它定义了大写空心粗体字命令 mathbb 和欧拉字体命令 mathfrak 以及数学公式中各种相应的字体，如：粗数学斜体和粗希腊字母下标、求和积分等大符号下标、欧拉数学字体、斯拉夫字体等。
+
+%amssymb  宏包套件 AMSFonts 中的一个宏包，它定义了 amsfonts 宏包里 msam 和 mabm 字库中全部数学符号的命令。当调用该宏包时，amsfonts 宏包也同时被加载了。
+
+%amsmath   它定义了各种显示多行公式的环境和一系列排版数学公式的命令，可用以改进和提高方程式、多行上下标等数学结构的排版效果。例如，它提供的一条命令：cfrac，用来排版连分数，要比标准 LaTeX 中的 frac 命令输出效果更加美观。该宏包还有11个选项，可以影响极限、方程和方程序号等数学式的放置，而这些选项的设置要优先于源文件中其他相关选项的设置。当调用该宏包的同时，另外三个与之相关的宏包：amsbsy、amsopn amstext，也自动被加载了。
+\usepackage{latexsym} %LATEX 的数学符号宏包
+\usepackage{mathptmx} % use Times fonts if available on your TeX system
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n} %mathptmx 下重新设置\mathcal{}
+\DeclareSymbolFont{largesymbols}{OMX}{cmex}{m}{n}%mathptmx 下重新设置\mathcal{}
+\usepackage{bm}       %处理数学公式中的黑斜体
+\usepackage{bbm}      %粗体%再加粗
+\usepackage{graphicx} %图片宏包
+\usepackage{subfigure}%控制绘图子图宏包
+\usepackage{graphics} %图片宏包
+\usepackage{color}    % 支持彩色
+\usepackage{epsfig}   % eps图像
+\usepackage{epstopdf} % eps图像转PDF
+\usepackage{algorithm}%排列算法
+\usepackage{algorithmicx}%排列算法
+\usepackage{mathrsfs} %数学花体，手写体（相当于汉字的草体，连笔较多）
+\usepackage{wasysym}  %未知宏包的作用
+\usepackage[colorlinks,linkcolor=blue,citecolor=blue]{hyperref} % 超链接
+\usepackage{caption}  %提供了多种命令来更方便的设计浮动图形和表格的标题式样。
+\usepackage{float}    %浮动表格
+\usepackage{multirow} %表中的跨行合并宏包
+\usepackage{multicol} %表中的跨列合并宏包
+\usepackage{comment}  %大段注释宏包
+\usepackage{overpic}  %允许直接将 LaTeX 对象放置到 一幅图形上，而不是通过对图形上已有的标记进行替换来实现。overpic 宏包中定义了一个
+                      %overpic 环境，它有效地将 picture 环境和 includegraphics 命令结合起来。 使得 picture 环境的维数和插入的 EPS 图形%的维数相同。 这样就可以很容易地把 LaTeX 的命令放到图形上的任何指定位置。同时，还可以在图形上加上标尺以方便定位。
+\usepackage{psfrag}   %允许用 LaTeX 的文本和公式来替代 EPS 图形文件中的字符。在 CJK, CCT 等中文环境下，可以使用 psfrag 将图形中的标记字符替换所需的中文文本。
+\usepackage{rotating} %图形和表格的控制可以将文本、表格、图形旋转，并提供了 sidewayfigure 和 sidewaystable 环境来使图形或表格横排。另外，也可以用 rotcaption 命令来只对图形或表格的标题加以横排。
+\usepackage{stmaryrd} %使用stmaryrd的符号宏包
+\usepackage{verbatim} % verbatim 环境
+\usepackage{ifthen}
+%\usepackage{ccmap}
+\usepackage{pifont}   %特殊符号的宏包
+%\usepackage{geometry} %页边距宏包
+%\geometry{left=3.5cm,right=3.3cm,top=2.8cm,bottom=2.8cm}
+\smartqed             % flush right qed marks, e.g. at end of proof用在证明结束后出现结束的符号，加上\qed 就有结束方框了
+\usepackage{enumitem} %环境计数器宏包
+% please place your own definitions here and don't use \def but   \newcommand{}{}
+
+\newcounter{num}      %自己命名一个计数器
+\setcounter{num}{1}   %计数器的初始值设为1
+\newcommand{\num}{\arabic{num}\refstepcounter{num}}     %每次调用计数器时, 计数器的值自加 1
+\newcommand{\method}{$\textbf{Method }$$\mathbf{\num}$} %自定义method命令,method命令包含num命令
+
+\def
+\theequation{\arabic{section}.\arabic{equation}}  %重新定义equation命令
+\numberwithin{equation}{section}                  %方程计数器随着section的更新由1重新计数
+
+\def
+\thetheorem{\arabic{section}.\arabic{theorem}}    %重新定义theorem命令
+\numberwithin{theorem}{section}                   %定理计数器随着section的更新由1重新计数
+
+\def
+\thelemma{\arabic{section}.\arabic{lemma}}        %重新定义lemma命令
+\numberwithin{lemma}{section}                     %引理计数器随着section的更新由1重新计数
+
+\def
+\thecorollary{\arabic{section}.\arabic{corollary}}% 重新定义corollary命令
+\numberwithin{corollary}{section}                 %推论计数器随着section的更新由1重新计数
+
+\renewcommand{\today}{\number\year \number-\month \number-\day}  % 重新设置日期格式，为年月日
+
+% Insert the name of "your journal" with
+\journalname{lxajournal}
+%
+\begin{document}
+\title{Single-step triangular splitting method for a class of complex symmetric  linear systems}
+
+%\author{Xi-An Li \and Wen-Li Gao \and Yu-Jiang Wu}
+
+\author{XXX \and {\color{red}LLL} \and GGG  \and KKK}
+
+\institute{
+           % Xi-An Li
+           %\at E-mail:lixian9131@163.com
+           XXX\\
+           \email {XXX@163.com
+           \at School of Mathematical Sciences, **** University,  PR China}
+   \and
+          {\color{red}{\large{\ding{41}}} LLL \\%信箱符号使用符号宏包pifont下的\ding{41}
+           \email LLL@***.edu.cn}
+           \at {\color{red} School of Mathematical Sciences, **** University,  PR China}
+    \and
+           GGG
+           \at School of Mathematical Sciences, **** University,  PR China
+    \and
+           KKK
+           \at School of Mathematical Sciences, **** University,  PR China
+}
+
+\date{Received: date / Accepted: date}
+% The correct dates will be entered by the editor
+\maketitle
+%Created by Li Xi'an on \date{\today}\\
+
+\begin{abstract}
+In this paper, we recast a broad class of complex symmetric linear systems into  block two-by-two real equivalent formulation and establish a single-step triangular splitting (SSTS) method to the real form. Then, we investigate the convergence properties of this method and determine its optimal iteration parameter as well as corresponding optimal convergence factor. In addition, a accelerated variant of the SSTS (named after ASSTS) method is presented, which generally improves the convergence rate of the STSS method. Finally, some numerical experiments are given to validate the theoretical results and test the performance of the SSTS and the ASSTS  methods.
+\keywords{Complex symmetry \and Two-by-two\and Symmetric positive definite \and SSTS\and Preconditioner \and Convergence}
+
+\noindent\textbf{Mathematics Subject Classifications (2010)} 65F10 $\cdot$ 65F50
+
+\end{abstract}
+
+\section{Introduction}\label{sec:1}
+We consider the iterative solution of large and sparse complex symmetric linear systems
+\begin{equation}\label{0101}
+Au=b~~ \mathrm{with}~~ A=W+iT\in \mathbb{C}^{n\times n}~~\mathrm{and}~~ u,b\in\mathbb{C}^{n},
+\end{equation}
+where $W, T\in\mathbb{R}^{n\times n}$ are symmetric matrices with at least one of them being positive definite. Without loss of generality, throughout the paper, we assume that $W$ is symmetric positive definite. The linear systems arises frequently in many scientific and engineering applications. For instance, diffuse optimal tomography \cite{Arridge1999Optical}, molecular scattering \cite{Poirier2000Efficient}, structural dynamics \cite{Feriani2000}, FFT-based solution of certain time-dependent PDEs \cite{Bertaccini2004Efficient} and so on. More examples and additional practical background can be found in Ref.\cite{Benzi2010Block}.
+
+The paper is organized as follows. In Section \ref{sec:02}, we give a program of  establishing the SSTS  method for solving the complex symmetric system of linear equations \eqref{0101}. In Section \ref{sec:03}, we  discuss the  convergence of the SSTS method and give a way of choosing the optimal parameter as well as optimal convergence factor for this method. In section \ref{sec:04}, we introduce an efficient predictioner to accelerate the convergence rate of the SSTS method and discuss its convergence. In Section \ref{sec:05}, some numerical examples are presented, and the numerical results verify the efficiency of these methods. Finally, the paper is concluded in Section \ref{sec:06}.
+
+\section{The SSTS method}\label{sec:02}
+In this section, we firstly propose the SSTS method to solve the block two-by-two linear systems \eqref{0102}. For the matrix $\mathcal{A}$, we use the same splitting form in \cite{Li2018On}
+
+
+\section{Convergence discussion for the SSTS method}\label{sec:03}
+
+In this section, we turn to study the convergence properties of the SSTS method. Firstly, two useful lemmas are introduced to support our theories.
+
+
+Based on the above lemmas, we have the following main results about the SSTS method for the block two-by-two linear systems \eqref{0102}.
+
+
+%
+
+
+
+
+\section{Numerical experiments}\label{sec:05}
+In this section, we illustrate the feasibility and efficiency of the SSTS and the ASSTS methods for solving  complex symmetric system of linear equations \eqref{0101}. Meantime, we compare their numerical results including iteration steps (denoted as IT), elapsed CPU time in seconds (denoted as CPU) and relative residual error (denoted as RES) with those of the MHSS, the SBTS, the SSTS and the ASSTS methods. The numerical experiment are performed in MATLAB[version 9.0.0.341360 (R2016a)] with machine precision $10^{-16}$.
+
+
+
+
+\begin{acknowledgements}
+Work is supported by National Natural Science Foundation of China.
+\end{acknowledgements}
+
+% BibTeX users please use one of
+%\bibliographystyle{spbasic}      % basic style, author-year citations
+%\bibliographystyle{spmpsci}      % mathematics and physical sciences
+%\bibliographystyle{spphys}       % APS-like style for physics
+%\bibliography{}   % name your BibTeX data base
+
+\bibliographystyle{spmpsci}      % mathematics and physical sciences
+\bibliography{References}
+
+\end{document}
+

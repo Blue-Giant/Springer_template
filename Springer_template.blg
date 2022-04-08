@@ -1,0 +1,24 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: Springer_template.aux
+The style file: spmpsci.bst
+Database file #1: References.bib
+You're missing a field name---line 241 of file References.bib
+ : 
+ : %  title={Iterative methods for sparse linear systems},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 418 of file References.bib
+ : 
+ : %  title={{Two Efficient Inexact Algorithms for a Class of Large Sparse Complex Linear Systems}},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 438 of file References.bib
+ : 
+ : %  title={Inexact splitting-based block preconditioners for block two-by-two linear systems},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 447 of file References.bib
+ : 
+ : %  title={Splitting-based block preconditioning methods for block two-by-two matrices of real square blocks},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+(There were 4 error messages)

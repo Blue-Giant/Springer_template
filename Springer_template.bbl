@@ -1,0 +1,40 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem{Arridge1999Optical}
+Arridge, S.R.: {Optical tomography in medical imaging}.
+\newblock Inverse Probl. \textbf{15}(2), 41--93 (1999)
+
+\bibitem{Benzi2010Block}
+Benzi, M., Bertaccini, D.: {Block preconditioning of real-valued iterative
+  algorithms for complex linear systems}.
+\newblock IMA J. Numer. Anal. \textbf{28}(3), 598--618 (2010)
+
+\bibitem{Bertaccini2004Efficient}
+Bertaccini, D.: {Efficient preconditioning for sequences of parametric complex
+  symmetric linear systems}.
+\newblock Electr. Trans. Numer. Anal. Etna \textbf{18}(2), 49--64 (2004)
+
+\bibitem{Feriani2000}
+Feriani, A., Perotti, F., Simoncini, V.: {Iterative system solvers for the
+  frequency analysis of linear mechanical systems}.
+\newblock Comput. Methods Appl. Mech. Eng. \textbf{190}(13¨C-14), 1719--1739
+  (2000)
+
+\bibitem{Li2018On}
+Li, X.A., Zhang, W.H., Wu, Y.J.: {On symmetric block triangular splitting
+  iteration method for a class of complex symmetric system of linear
+  equations}.
+\newblock Appl. Math. Lett. \textbf{79}, 131--137 (2018)
+
+\bibitem{Poirier2000Efficient}
+Poirier, B.: {Efficient preconditioning scheme for block partitioned matrices
+  with structured sparsity}.
+\newblock Numer. Linear Algebra Appl. \textbf{7}(7--8), 715--726 (2000)
+
+\end{thebibliography}

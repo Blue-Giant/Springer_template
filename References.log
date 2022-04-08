@@ -1,0 +1,132 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdftex 2017.12.26)  26 DEC 2017 19:15
+entering extended mode
+**F:/李西安论文/已完成的论文/SSTS1_Springer/References.bib
+(F:/李西安论文/已完成的论文/SSTS1_Springer/References.bib
+Overfull \hbox (5.9948pt too wide) in paragraph at lines 2--11
+[]\tenrm @articleBenzi2004A, ti-tle=A pre-con-di-tioner for gen-er-al-ized sad-
+dle point prob-lems, au-thor=Benzi, Michele|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm a
+.\tenrm r
+.\tenrm t
+.etc.
+
+
+Overfull \hbox (44.96834pt too wide) in paragraph at lines 37--45
+[]\tenrm @articleEvans1998Partial, ti-tle=Partial dif-fer-en-tial equa-tions, a
+u-thor=Evans, Lawrence C., jour-nal=Mathematical|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm a
+.\tenrm r
+.\tenrm t
+.etc.
+
+Missing character: There is no � in font cmr10!
+
+Overfull \hbox (19.35492pt too wide) in paragraph at lines 92--101
+[]\tenrm @articleSogabe2007A, ti-tle=A COCR method for solv-ing com-plex sym-me
+t-ric lin-ear sys-tems, au-thor=Sogabe,|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm a
+.\tenrm r
+.\tenrm t
+.etc.
+
+
+Overfull \hbox (4.38504pt too wide) in paragraph at lines 92--101
+\tenrm To-mo-hiro and Zhang, Shao-Liang, jour-nal=Journal of Com-pu-ta-tional a
+nd Ap-plied Math-e-mat-ics, vol-ume=199,|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\tenrm T
+.\kern-0.83334
+.\tenrm o
+.\discretionary
+..\tenrm -
+.\tenrm m
+.etc.
+
+
+Overfull \hbox (3.2181pt too wide) in paragraph at lines 159--168
+[]\tenrm @articleBai2007On, ti-tle=On successive-overrelaxation ac-cel-er-a-tio
+n of the Her-mi-tian and skew-Hermitian|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm a
+.\tenrm r
+.\tenrm t
+.etc.
+
+
+Overfull \hbox (28.30165pt too wide) in paragraph at lines 170--179
+[]\tenrm @articleBai2013Rotated, ti-tle=Rotated block tri-an-gu-lar pre-con-di-
+tion-ing based on PMHSS, author=Bai,Zhong-|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm a
+.\tenrm r
+.\tenrm t
+.etc.
+
+[1{D:/CTEX/UserData/pdftex/config/pdftex.map{Unicode.sfd}{UGBK.sfd}}]
+Missing character: There is no � in font cmr10!
+
+Overfull \hbox (23.88495pt too wide) in paragraph at lines 349--356
+[]\tenrm @bookAxelsson1994Iterative, ti-tle=Iterative so-lu-tion meth-ods, au-t
+hor=Axelsson, Owe, pub-lisher=Cambridge|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm b
+.\kern0.27779
+.\tenrm o
+.etc.
+
+
+Overfull \hbox (3.46477pt too wide) in paragraph at lines 397--406
+[]\tenrm @articleJunfeng2012GENERALIZED, ti-tle=GENERALIZED PRE-CON-DI-TIONED H
+ER-MI-TIAN AND|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm a
+.\tenrm r
+.\tenrm t
+.etc.
+
+[2]
+Overfull \hbox (9.99384pt too wide) in paragraph at lines 494--503
+\tenrm TIVE DEF-I-NITE MA-TRI-CES, author=Bai,Zhong-Zhi and Yin,Jun-Feng and Su
+n,Yang-Feng, jour-nal=Journal|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\tenrm T
+.\tenrm I
+.\tenrm V
+.\tenrm E
+.\glue 3.33333 plus 1.66498 minus 1.11221
+.etc.
+
+)
+*
+! Emergency stop.
+<*> ...�成的论文/SSTS1_Springer/References.bib
+                                                  
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!
